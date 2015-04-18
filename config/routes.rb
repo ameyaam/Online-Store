@@ -1,4 +1,13 @@
 Project::Application.routes.draw do
+  resources :products
+
+
+  resources :categories
+
+
+  resources :users
+
+
   resources :farmers_markets
 
 
