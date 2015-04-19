@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :image_path %><br />
+    <%= f.text_field :image_path %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -20,8 +24,12 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :img_path %><br />
-    <%= f.text_field :img_path %>
+    <%= f.label :FarmersMarket %><br />
+    <%= collection_select :product, :FarmersMarket_id, FarmersMarket.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :Category %><br />
+    <%= collection_select :product, :Category_id, Category.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

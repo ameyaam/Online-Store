@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe "products/new", :type => :view do
   before(:each) do
     assign(:product, Product.new(
+      :image_path => "MyString",
       :name => "MyString",
-      :price => "MyString",
-      :img_path => "MyString"
+      :price => 1.5,
+      :FarmersMarket => nil,
+      :Category => nil
     ))
   end
 
@@ -14,11 +16,15 @@ RSpec.describe "products/new", :type => :view do
 
     assert_select "form[action=?][method=?]", products_path, "post" do
 
+      assert_select "input#product_image_path[name=?]", "product[image_path]"
+
       assert_select "input#product_name[name=?]", "product[name]"
 
       assert_select "input#product_price[name=?]", "product[price]"
 
-      assert_select "input#product_img_path[name=?]", "product[img_path]"
+      assert_select "input#product_FarmersMarket[name=?]", "product[FarmersMarket]"
+
+      assert_select "input#product_Category[name=?]", "product[Category]"
     end
   end
 end

@@ -1,3 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :img_path, :name, :price
+  belongs_to :FarmersMarket
+  belongs_to :Category
+  attr_accessible :image_path, :name, :price, :FarmersMarket_id, :Category_id
 end

@@ -1,15 +1,17 @@
 Project::Application.routes.draw do
+  resources :carts
+
+
   resources :products
 
 
   resources :categories
 
 
-  resources :users
-
-
   resources :farmers_markets
 
+
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
