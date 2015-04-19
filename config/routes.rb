@@ -1,6 +1,7 @@
 Project::Application.routes.draw do
-  resources :carts
+  match '/home' => 'home#index'
 
+  resources :carts
 
   resources :products
 
