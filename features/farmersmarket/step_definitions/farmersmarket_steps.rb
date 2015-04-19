@@ -1,5 +1,13 @@
 Given(/^I'm on the farmers market creation page$/) do
-  visit(new_farmers_market_path)
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.new(:email => email, :password => password, :password_confirmation => password).save!
+
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Log in"
+  visit 'farmers_markets/new'
 end
 
 When(/^I add a new farmers market$/) do
@@ -11,7 +19,7 @@ When(/^I add a new farmers market$/) do
 end
 
 Then(/^I should be able to see the new farmers market's page$/) do
-  assert page.has_content?("Farmers market was successfully created")
+  assert page.has_content?("Philadelphia")
 end
 
 When(/^I add a new farmers market without a name$/) do
