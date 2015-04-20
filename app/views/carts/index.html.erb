@@ -3,8 +3,9 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Farmersmarket</th>
     <th>Product</th>
+    <th>Farmersmarket</th>
+    <th>Quantity</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +13,10 @@
 
 <% @carts.each do |cart| %>
   <tr>
-    <td><%= cart.user_id %></td>
-    <td><%= cart.FarmersMarket_id %></td>
+    <td><%= cart.user %></td>
     <td><%= cart.Product_id %></td>
+    <td><%= cart.FarmersMarket_id %></td>
+    <td><%= cart.quantity %></td>
     <td><%= link_to 'Show', cart %></td>
     <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
     <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>

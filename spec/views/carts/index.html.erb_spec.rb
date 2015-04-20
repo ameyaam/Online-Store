@@ -5,13 +5,15 @@ RSpec.describe "carts/index", :type => :view do
     assign(:carts, [
       Cart.create!(
         :user => nil,
+        :Product => "",
         :FarmersMarket => "",
-        :Product => ""
+        :quantity => 1
       ),
       Cart.create!(
         :user => nil,
+        :Product => "",
         :FarmersMarket => "",
-        :Product => ""
+        :quantity => 1
       )
     ])
   end
@@ -21,5 +23,6 @@ RSpec.describe "carts/index", :type => :view do
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "".to_s, :count => 2
     assert_select "tr>td", :text => "".to_s, :count => 2
+    assert_select "tr>td", :text => 1.to_s, :count => 2
   end
 end

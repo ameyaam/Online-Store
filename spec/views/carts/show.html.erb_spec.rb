@@ -4,8 +4,9 @@ RSpec.describe "carts/show", :type => :view do
   before(:each) do
     @cart = assign(:cart, Cart.create!(
       :user => nil,
+      :Product => "",
       :FarmersMarket => "",
-      :Product => ""
+      :quantity => 1
     ))
   end
 
@@ -14,5 +15,6 @@ RSpec.describe "carts/show", :type => :view do
     expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(//)
+    expect(rendered).to match(/1/)
   end
 end

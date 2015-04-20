@@ -20,6 +20,22 @@ class CartsController < ApplicationController
   def edit
   end
 
+  def add_to_cart
+    p session["market_id"]
+    market_id = session["market_id"]
+    p session["warden.user.user.key"][0][0]
+    user_id = session["warden.user.user.key"][0][0]
+    product_id = params[:product_id]
+    quantity = params[:quantity]
+
+    cart = Cart.new(:user_id => user_id, :Product_id => product_id, :FarmersMarket_id => market_id, :quantity => quantity)
+    cart.save
+    respond_to do |format|
+      msg = Hash.new
+      format.json {render :json => msg}
+    end
+  end
+
   def create
     @cart = Cart.new(params[:cart])
     @cart.save

@@ -1,0 +1,100 @@
+<h1>New Article</h1>
+
+<script>
+		<!-- On Startup this function call get_products and displays the products on page -->
+		$(function()
+		{
+			alert("hide");
+			data = {};
+			$.ajax({
+	        	type: "GET",
+	        	url: "/categories/get_all_categories",
+	        	data: data
+      		})
+
+      		.done(function(data){
+      			alert(data[0]["name"]);
+      			alert("inside get_all_products");
+			data = {};
+			$.ajax({
+	        	type: "GET",
+	        	url: "/products/get_all_products",
+	        	data: data
+      		})
+
+      		.done(function(data){
+      			alert(data[0]["name"])
+
+      		});
+      		});
+
+
+
+		});
+
+		<!-- On Startup this function call get_products and displays the products on page -->
+		function get_all_products()
+		{
+			setTimeout(loadajax,1000);
+			alert("inside get_all_products");
+			data = {};
+			$.ajax({
+	        	type: "GET",
+	        	url: "/products/get_all_products",
+	        	data: data
+      		})
+
+      		.done(function(data){
+      			alert(data[0]["name"])
+
+      		});
+
+
+		}
+
+</script>
+
+<script>
+
+		function get_products()
+		{
+
+			data = {'category' : "1"};
+			$.ajax({
+	        	type: "GET",
+	        	url: "/products/get_products",
+	        	data: data
+      		})
+
+      		.done(function(data){
+      			alert(data[0]["name"])
+
+      		});
+
+
+		}
+</script>
+
+<script>
+
+		function add_to_cart()
+		{
+
+			data = {'product_id' : "1", 'quantity' : "1" };
+			$.ajax({
+	        	type: "GET",
+	        	url: "/carts/add_to_cart",
+	        	data: data
+      		})
+
+      		.done(function(data){
+      			alert("success")
+
+      		});
+
+
+		}
+</script>
+
+<button onclick="get_products()">Get Products</button>
+<button onclick="add_to_cart()">Add Products to cart</button>

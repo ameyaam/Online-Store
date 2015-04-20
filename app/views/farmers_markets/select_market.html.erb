@@ -1,0 +1,35 @@
+
+	<script>
+		function get_farmers_markets()
+		{
+			var selected_city = new Object();
+			e = document.getElementById("city_name");
+			selected_city["city"] = e.options[e.selectedIndex].value;
+			alert(selected_city["city"]);
+
+			$.ajax({
+	        	type: "GET",
+	        	url: "/farmers_markets/get_nearby_markets",
+	        	data: selected_city,
+	        	dataType: "json"
+      		})
+
+      		.done(function(data){
+      			//var str = JSON.stringify(data, null, 2); 
+      			alert(data[0]["name"]);
+
+      		})
+		}
+	</script>
+
+
+	
+		<select name="city" id="city_name">
+			<option value="New York City">New York City</option>
+			<option value="Philadelphia">Philadelphia</option>
+		</select>
+		<input type="text" id="market_name">
+	<button onclick="get_farmers_markets()">Get Markets</button>
+
+	<a href="/farmers_markets/set_market?market_id=1">Display Market</a>
+	

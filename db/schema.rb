@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150419005024) do
+ActiveRecord::Schema.define(:version => 20150420063649) do
 
   create_table "carts", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "FarmersMarket_id"
     t.integer  "Product_id"
+    t.integer  "FarmersMarket_id"
+    t.integer  "quantity"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

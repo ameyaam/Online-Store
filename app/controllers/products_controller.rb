@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  def get_products
+  def get_all_products
     response_hashlist = Hash.new
     p "session id"
     p session["market_id"]
@@ -44,6 +44,33 @@ class ProductsController < ApplicationController
     end
 
   end
+
+  def get_products
+    response_hashlist = Hash.new
+    p "session id"
+    p session["market_id"]
+    market_id = session["market_id"]
+    category_id = params[:category]
+    @products = Product.where("FarmersMarket_id = ? AND Category_id = ?",market_id, category_id)
+    p @products
+
+    i = 0
+    @products.each do |product|
+      response_hashlist[i] = product.as_json
+      i = i + 1
+    end
+
+    puts response_hashlist
+
+    puts response_hashlist.to_json
+
+     respond_to do |format|
+      msg = response_hashlist
+      format.json {render :json => msg}
+    end
+
+  end
+
 
   def create
     @product = Product.new(params[:product])

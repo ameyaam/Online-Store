@@ -17,21 +17,31 @@ class CategoriesController < ApplicationController
     respond_with(@category)
   end
 
-  def all
+  def get_all_categories
+    response_hashlist = Hash.new
     @categories = Category.all
     #Access user id from session
     p session["warden.user.user.key"][0][0]
-    # Set Market Id in the session object
-    session["market_id"] = 1
+
+    # Set Market Id in the session object in the home page
     p session["market_id"]
     
     p @categories
-    
-    #respond_with(@categories)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
+    i = 0
+    @categories.each do |category|
+      response_hashlist[i] = category.as_json
+      i = i + 1
     end
+
+    puts response_hashlist
+
+    puts response_hashlist.to_json
+
+     respond_to do |format|
+      msg = response_hashlist
+      format.json {render :json => msg}
+    end
+
   end
 
   def edit

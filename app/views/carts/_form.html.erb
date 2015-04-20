@@ -16,12 +16,16 @@
     <%= collection_select :cart, :user_id, User.all, :id, :email %>
   </div>
   <div class="field">
+    <%= f.label :Category %><br />
+    <%= collection_select :cart, :Product_id, Product.all, :id, :name %>
+  </div>
+   <div class="field">
     <%= f.label :FarmersMarket %><br />
     <%= collection_select :cart, :FarmersMarket_id, FarmersMarket.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :Product %><br />
-    <%= collection_select :cart, :Product_id, Product.all, :id, :name %>
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
   </div>
   <div class="actions">
     <%= f.submit %>
