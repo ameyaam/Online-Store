@@ -17,6 +17,23 @@ class CategoriesController < ApplicationController
     respond_with(@category)
   end
 
+  def all
+    @categories = Category.all
+    #Access user id from session
+    p session["warden.user.user.key"][0][0]
+    # Set Market Id in the session object
+    session["market_id"] = 1
+    p session["market_id"]
+    
+    p @categories
+    
+    #respond_with(@categories)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @categories }
+    end
+  end
+
   def edit
   end
 

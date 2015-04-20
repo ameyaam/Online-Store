@@ -3,10 +3,17 @@ Project::Application.routes.draw do
 
   resources :carts
 
-  resources :products
+  resources :products do
+    collection do
+      get 'get_products'
+    end
+  end
 
-
-  resources :categories
+  resources :categories do
+    collection do
+      get 'all'
+    end
+  end
 
 
   resources :farmers_markets
