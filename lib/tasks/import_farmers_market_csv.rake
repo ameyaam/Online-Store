@@ -1,7 +1,7 @@
 require 'csv'
 namespace :import_farmers_market_csv do
   task :create_farmers_market => :environment do
-    csv_text = File.read('/home/shivam/cit597/project/project/FarmersMarket.csv')
+    csv_text = File.read('./FarmersMarket.csv')
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
     	farmersmarket = FarmersMarket.new
