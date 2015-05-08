@@ -1,14 +1,3 @@
-<style type="text/css">
-	h1{
-		color:white;
-	}
-	table,tr,td{
-		color:white;
-	}
-</style>
-
-
-
 <h1>Select your city</h1>
 <table border="true" style="color:white;">
   <tr>
@@ -17,7 +6,7 @@
  
 <% @farmers_markets.each do |market| %>
   <tr>
-    <td><a href="/farmers_markets/get_nearby_markets?city=<%= market %>" style="color:white;font-size:160%"><%= market %></a></td>
+    <td><a href="/farmers_markets/get_nearby_markets?city=<%= market %>"><%= market %></a></td>
   </tr>
 <% end %>
 </table>
