@@ -14,7 +14,7 @@
 <% @carts.each do |cart| %>
   <tr>
     <td><%= cart.user %></td>
-    <td><%= cart.Product_id %></td>
+    <td><%= cart.Product_id.name %></td>
     <td><%= cart.FarmersMarket_id %></td>
     <td><%= cart.quantity %></td>
     <td><%= link_to 'Show', cart %></td>

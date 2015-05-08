@@ -22,15 +22,22 @@ class CartsController < ApplicationController
 
   def checkout
     user_id = session["warden.user.user.key"][0][0]
-    @checkout_data = Cart.where("User_id = ?", user_id)
-
-    @checkout_data.each do |item|
-      print item.products
+    checkout_data = Cart.where("User_id = ?", user_id)
+    print @checkout_data
+    print "PRINTING ITEMS FROM CART"
+    @products = []
+    @amount = 0
+    checkout_data.each do |item|
+      @products.insert(-1, [Product.find(item.Product_id).name, FarmersMarket.find(item.FarmersMarket_id).name, item.quantity, Product.find(item.Product_id).price])
+      @amount = @amount + Product.find(item.Product_id).price
     end
-
-    #respond_to do |format|
-    #  format.html { render :template => "carts/checkout" }
-    #end
+    Cart.destroy_all(User_id: user_id)
+    print @products
+    print "AMOUNT IS"
+    print @amount
+    respond_to do |format|
+      format.html { render :template => "carts/checkout" }
+    end
   end
 
   def add_to_cart
@@ -43,6 +50,11 @@ class CartsController < ApplicationController
 
     cart = Cart.new(:user_id => user_id, :Product_id => product_id, :FarmersMarket_id => market_id, :quantity => quantity)
     cart.save
+
+    respond_to do |format|
+      msg = Hash.new
+      format.json {render :json => msg}
+    end
   end
 
   def create
