@@ -36,10 +36,12 @@ class FarmersMarketsController < ApplicationController
     respond_with(@farmers_market)
   end
 
+
+
+=begin
   def get_nearby_markets
     response_hashlist = Hash.new
     @nearby_markets = FarmersMarket.where("city = ?", params[:city])
-    puts"**************PRINTING FARMERS MARKETS**************"
     
     i = 0
     @nearby_markets.each do |market|
@@ -56,6 +58,14 @@ class FarmersMarketsController < ApplicationController
       #msg = {:name => "ameya", :city => "philly"}
       msg = response_hashlist
       format.json {render :json => msg}
+    end
+  end
+=end
+
+  def get_nearby_markets
+    @farmers_markets = FarmersMarket.where("city = ?", params[:city])
+    respond_to do |format|
+      format.html {render :template => "farmers_markets/nearby_markets"}
     end
   end
 

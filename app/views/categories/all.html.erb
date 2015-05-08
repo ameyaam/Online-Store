@@ -1,25 +1,19 @@
-<h1>New Article</h1>
+<h1>Choose a category</h1>
+
+<table>
+  <tr>
+    <th>Category Name at <%=@market_name %></th>
+    <th></th>
+  </tr>
+
 <% @categories.each do |category| %>
-	<p><%= category.name %></p>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= link_to 'Show', category %></td>
+  </tr>
 <% end %>
+</table>
 
-<script>
-		<!-- On Startup this function call get_products and displays the products on page -->
-		$(function()
-		{
-			alert("hide");
-			data = {};
-			$.ajax({
-	        	type: "GET",
-	        	url: "/products/get_products",
-	        	data: data
-      		})
+<br />
 
-      		.done(function(data){
-      			alert(data[0]["name"])
-
-      		});
-
-
-		});
-</script>
+<%= link_to 'New Category', new_category_path %>

@@ -6,6 +6,8 @@ Project::Application.routes.draw do
 
   match '/select_product' => 'home#shop'
 
+  get '/categories/:id/get_categories' => 'categories#get_categories'
+
   resources :products do
     collection do
       get 'get_all_products'

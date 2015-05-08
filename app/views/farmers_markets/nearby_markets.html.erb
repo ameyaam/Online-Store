@@ -1,0 +1,36 @@
+
+<h1 align="center">Select a farmer's market</h1>
+
+<table border='true'>
+  <tr>
+  	<th>Name</th>
+    <th>City</th>
+    <th>County</th>
+    <th>Facebook</th>
+    <th>State</th>
+    <th>Street</th>
+    <th>Website</th>
+    <th>Zip</th>
+    <th>Link</th>
+  </tr>
+
+<% @farmers_markets.each do |farmers_market| %>
+  <tr>
+  	<td><%= farmers_market.name %></td>
+    <td><%= farmers_market.city %></td>
+    <td><%= farmers_market.county %></td>
+    <td><%= farmers_market.facebook %></td>
+    <td><%= farmers_market.state %></td>
+    <td><%= farmers_market.street %></td>
+    <td><%= farmers_market.website %></td>
+    <td><%= farmers_market.zip %></td>
+    <!--td><%= link_to 'Visit', farmers_market %></td-->
+    <td><a href="/categories/<%= farmers_market.id %>/get_categories">Click here to visit</a></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Farmers market', new_farmers_market_path %>

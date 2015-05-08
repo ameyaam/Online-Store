@@ -1,2 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Select your city</h1>
+<table>
+  <tr>
+    <th>City</th>
+  </tr>
+ 
+<% @farmers_markets.each do |market| %>
+  <tr>
+    <td><a href="/farmers_markets/get_nearby_markets?city=<%= market %>"><%= market %></a></td>
+  </tr>
+<% end %>
+</table>
