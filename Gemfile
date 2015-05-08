@@ -48,6 +48,7 @@ group :test, :development do
 end
 
 gem 'devise'
+gem 'sass', '3.2.13'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
