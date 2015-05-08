@@ -31,7 +31,7 @@ class CartsController < ApplicationController
       @products.insert(-1, [Product.find(item.Product_id).name, FarmersMarket.find(item.FarmersMarket_id).name, item.quantity, Product.find(item.Product_id).price])
       @amount = @amount + Product.find(item.Product_id).price
     end
-    Cart.destroy_all(User_id: user_id)
+    Cart.destroy_all(user_id: user_id)
     print @products
     print "AMOUNT IS"
     print @amount
