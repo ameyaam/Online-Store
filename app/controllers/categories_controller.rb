@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
     @market_id = session["market_id"]
 
     category_id = params[:id]
-    query = "FarmersMarket_id = " + @market_id + " AND Category_id = " + category_id
+    query = "farmersmarket_id = " + @market_id + " AND Category_id = " + category_id
     puts query
     @products = Product.where(query)
 
