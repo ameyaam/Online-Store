@@ -22,7 +22,7 @@ class CartsController < ApplicationController
 
   def checkout
     user_id = session["warden.user.user.key"][0][0]
-    checkout_data = Cart.where("User_id = ?", user_id)
+    checkout_data = Cart.where("\"User_id\" = ?", user_id)
     print @checkout_data
     print "PRINTING ITEMS FROM CART"
     @products = []
