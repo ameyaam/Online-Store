@@ -58,10 +58,13 @@ class CategoriesController < ApplicationController
     @market_id = session["market_id"]
 
     category_id = params[:id]
-    query = "farmersmarket_id = " + @market_id + " AND Category_id = " + category_id
+    query = "select * from Products where farmersmarket_id = " + @market_id + " and Category_id = " + category_id
     puts query
-    @products = Product.where(query)
-
+    #@products = Product.where(query)
+    @products = ActiveRecord::Base.connection.execute(query)
+    @products.each do |product|
+      p product['name']
+    end
     respond_to do |format|
       format.html { render :template => "products/show_all_products" }
     end
