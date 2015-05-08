@@ -20,6 +20,19 @@ class CartsController < ApplicationController
   def edit
   end
 
+  def checkout
+    user_id = session["warden.user.user.key"][0][0]
+    @checkout_data = Cart.where("User_id = ?", user_id)
+
+    @checkout_data.each do |item|
+      print item.products
+    end
+
+    #respond_to do |format|
+    #  format.html { render :template => "carts/checkout" }
+    #end
+  end
+
   def add_to_cart
     p session["market_id"]
     market_id = session["market_id"]
@@ -30,10 +43,6 @@ class CartsController < ApplicationController
 
     cart = Cart.new(:user_id => user_id, :Product_id => product_id, :FarmersMarket_id => market_id, :quantity => quantity)
     cart.save
-    respond_to do |format|
-      msg = Hash.new
-      format.json {render :json => msg}
-    end
   end
 
   def create

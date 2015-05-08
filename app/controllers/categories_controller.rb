@@ -51,6 +51,24 @@ class CategoriesController < ApplicationController
 
   end
 
+
+  def get_products
+    response_hashlist = Hash.new
+
+    @market_id = session["market_id"]
+
+    category_id = params[:id]
+
+    @products = Product.where("FarmersMarket_id = ? AND Category_id = ?",@market_id, category_id)
+
+    respond_to do |format|
+      format.html { render :template => "products/show_all_products" }
+    end
+
+  end
+
+
+
   def edit
   end
 
