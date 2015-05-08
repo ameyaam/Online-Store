@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  def get_all_products
+  def get_products
     response_hashlist = Hash.new
     p "session id"
     p session["market_id"]

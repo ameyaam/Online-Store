@@ -1,19 +1,18 @@
 <h1>Choose a category</h1>
 
-<table>
+<table border="true">
   <tr>
-    <th>Category Name at <%=@market_name %></th>
-    <th></th>
+    <th>Category Name</th>
+    <th>View</th>
   </tr>
 
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.name %></td>
-    <td><%= link_to 'Show', category %></td>
+    <td> <a href="/category/<%= category.id %>/products">Show Products</a></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Category', new_category_path %>

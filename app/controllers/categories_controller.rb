@@ -25,8 +25,9 @@ class CategoriesController < ApplicationController
 
     # Set Market Id in the session object in the home page
     session["market_id"] = params[:id]
-    @market_name = FarmersMarket.where("id = ?", params[:id]).select(:name).name
-    print @market_name
+    p params[:id]
+    #@market_name = FarmersMarket.where("id = ?", params[:id]).select(:name).name
+    #print @market_name
 =begin
     p @categories
     i = 0
