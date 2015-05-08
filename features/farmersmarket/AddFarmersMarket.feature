@@ -23,3 +23,8 @@ Feature: FarmersMarkets page
     Given I'm on the farmers market creation page
     When I add a new farmers market without a city
     Then I should see some errors on the page3
+
+  Scenario: delete a farmers market
+    Given I'm on the farmers market page
+    When I delete a farmersmarket
+    Then I should be able to see the deleted farmersmarket's page

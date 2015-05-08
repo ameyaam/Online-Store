@@ -68,18 +68,6 @@ class FarmersMarketsController < ApplicationController
       format.html {render :template => "farmers_markets/nearby_markets"}
     end
   end
-
-  def set_market
-    farmers_market_id = params[:market_id]
-    p farmers_market_id
-
-    session["market_id"] = farmers_market_id
-
-    respond_to do |format|
-      format.html { render :template => "home/shop" }
-    end
-
-  end
   
   private
     def set_farmers_market
