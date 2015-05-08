@@ -1,7 +1,5 @@
 Project::Application.routes.draw do
 
-  root :to => redirect('/home')
-
   match '/home' => 'home#index'
 
   match '/select_markets' => 'farmers_markets#select_market'

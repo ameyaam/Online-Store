@@ -29,7 +29,7 @@ class CartsController < ApplicationController
     @amount = 0
     checkout_data.each do |item|
       @products.insert(-1, [Product.find(item.Product_id).name, FarmersMarket.find(item.FarmersMarket_id).name, item.quantity, Product.find(item.Product_id).price])
-      @amount = @amount + Product.find(item.Product_id).price
+      @amount = @amount + Product.find(item.Product_id).price*item.quantity
     end
     Cart.destroy_all(user_id: user_id)
     print @products
