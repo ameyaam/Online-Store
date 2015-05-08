@@ -1,27 +1,23 @@
-<h1>Your orders have been placed</h1>
+<h2>Your orders have been placed</h2>
 
-<table>
+<table border="true">
   <tr>
-    <th>User</th>
     <th>Product</th>
     <th>Farmersmarket</th>
     <th>Quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Price</th>
   </tr>
 
-<% @carts.each do |cart| %>
+<% @products.each do |item| %>
   <tr>
-    <td><%= cart.user %></td>
-    <td><%= cart.Product_id %></td>
-    <td><%= cart.FarmersMarket_id %></td>
-    <td><%= cart.quantity %></td>
-    <td><%= link_to 'Show', cart %></td>
-    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-    <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= item[0] %></td>
+    <td><%= item[1] %></td>
+    <td><%= item[2] %></td>
+    <td><%= item[3] %></td>
   </tr>
 <% end %>
 </table>
+
+<h4> Your total bill amount is <%=@amount %> </h4>
 
 <br />
