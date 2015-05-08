@@ -8,6 +8,12 @@ Project::Application.routes.draw do
 
   get '/categories/:id/get_categories' => 'categories#get_categories'
 
+  get '/categories/:id/get_products' => 'categories#get_products'
+
+  post '/carts/add_to_cart' => 'carts#add_to_cart'
+
+  get '/carts/checkout' => 'carts#checkout'
+
   resources :products do
     collection do
       get 'get_all_products'

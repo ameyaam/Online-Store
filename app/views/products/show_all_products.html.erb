@@ -1,0 +1,58 @@
+<h1>Listing products</h1>
+
+<script>
+function send_item(clicked_id)
+    {
+      item_info = new Object();
+      item_info["product_id"] = clicked_id;
+      item_info["quantity"] = document.getElementById("quantity_" + clicked_id).value;
+
+      $.ajax({
+        type: "POST",
+        url: "/carts/add_to_cart",
+        data: item_info,
+        dataType: "json"
+      })
+      .done(function(data){
+        alert("success!");
+
+      })
+    }
+
+</script>
+
+<a href="/carts/checkout"><button>Checkout</button></a>
+<br>
+<br>
+<table border="true">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td>
+        <select id="quantity_<%= product.id %>">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </td>
+    <td><button id="<%= product.id%>" onclick="send_item(this.id)"> Add</button></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
