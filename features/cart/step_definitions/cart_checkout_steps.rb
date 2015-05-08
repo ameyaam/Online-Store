@@ -24,3 +24,14 @@ end
 Then(/^I should be able to see the product on checkout page$/) do
   assert page.has_content?("bill")
 end
+
+When(/^I add item to a cart$/) do
+  click_button "Add"
+  page.driver.post('/carts/add_to_cart', {:product_id => "1", :quantity => "1"})
+  click_link "checkout"
+  
+end
+
+Then(/^I should be able to see the added item in cart$/) do
+  assert page.has_content?("bill")
+end

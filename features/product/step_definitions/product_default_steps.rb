@@ -32,3 +32,11 @@ end
 Then(/^I should be able to see the deleted product's page$/) do
   assert page.has_content?("product")
 end
+
+When(/^I create a product$/) do
+  page.driver.post('/products', {:name => "Garlic", :price => "5", :FarmersMarket_id => "1", :Category_id => "1"})
+end
+
+Then(/^I should be able to see the created product's page$/) do
+  assert page.has_content?("product")
+end

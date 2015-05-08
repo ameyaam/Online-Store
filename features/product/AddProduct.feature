@@ -18,3 +18,8 @@ Feature: Cart page
     Given I'm on the product page
     When I delete a product
     Then I should be able to see the deleted product's page
+
+  Scenario: create a product
+    Given I'm on the product page
+    When I create a product
+    Then I should be able to see the created product's page

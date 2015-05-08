@@ -17,8 +17,6 @@ class ProductsController < ApplicationController
     respond_with(@product)
   end
 
-  def edit
-  end
 
 
   def create

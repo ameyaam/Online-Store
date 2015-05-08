@@ -1,4 +1,4 @@
-Given(/^I'm on the cart creation page$/) do
+Given(/^I'm on the cart new page$/) do
 email = 'testing@man.net'
   password = 'secretpass'
   User.new(:email => email, :password => password, :password_confirmation => password).save!
@@ -19,6 +19,6 @@ When(/^I add a new cart$/) do
   fill_in 'Quantity', :with => "5"
 end
 
-Then(/^I should be able to see the new cart's page$/) do
+Then(/^I should be able to see the cart$/) do
   assert page.has_content?("Edit")
 end
